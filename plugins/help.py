@@ -17,7 +17,7 @@ def _start(client, message):
             if user.status == "kicked":
                client.send_message(
                    chat_id=message.chat.id,
-                   text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/UniversalBotsSupport).",
+                   text="𝗦𝗼𝗿𝗿𝘆 𝗦𝗶𝗿, 𝗬𝗼𝘂 𝗮𝗿𝗲 𝗕𝗮𝗻𝗻𝗲𝗱 𝘁𝗼 𝘂𝘀𝗲 𝗺𝗲. 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 𝗺𝘆 [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽](https://t.me/gatayaofficialnew).",
                    parse_mode="markdown",
                    disable_web_page_preview=True
                )
@@ -25,11 +25,11 @@ def _start(client, message):
         except UserNotParticipant:
             client.send_message(
                 chat_id=message.chat.id,
-                text="**Please Join My Updates Channel to use this Bot!**",
+                text="❗ 𝗣𝗹𝗲𝗮𝘀𝗲 𝗝𝗼𝗶𝗻 𝗠𝘆 𝗨𝗽𝗱𝗮𝘁𝗲𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗶𝘀 𝗕𝗼𝘁!",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{update_channel}")
+                            InlineKeyboardButton("𝗝𝗼𝗶𝗻 𝗡𝗼𝘄 ✅", url=f"https://t.me/{update_channel}")
                         ]
                     ]
                 ),
@@ -42,11 +42,11 @@ def _start(client, message):
 	        reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                           InlineKeyboardButton("Join Updates Channel", url="https://t.me/UniversalBotsUpdate"),
-                           InlineKeyboardButton("Support Group", url="https://t.me/UniversalBotsSupport")
+                           InlineKeyboardButton("𝗝𝗼𝗶𝗻 𝗨𝗽𝗱𝗮𝘁𝗲𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹", url="https://t.me/Gataya_Official_Youtube_Updates"),
+                           InlineKeyboardButton("𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽", url="https://t.me/Gatayaofficialnew")
                       ],
                      [
-                           InlineKeyboardButton("🧑‍💻Devloper🧑‍💻", url="https://t.me/JigarVarma2005")
+                           InlineKeyboardButton("🧑‍💻𝗗𝗲𝘃🧑‍💻", url="https://t.me/ChatSANU_bot")
                      ]
                  ]
              ),
@@ -59,11 +59,11 @@ def _start(client, message):
 	reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Join Updates Channel", url="https://t.me/UniversalBotsUpdate"),
-                    InlineKeyboardButton("Support Group", url="https://t.me/UniversalBotsSupport")
+                    InlineKeyboardButton("𝗝𝗼𝗶𝗻 𝗨𝗽𝗱𝗮𝘁𝗲𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹", url="https://t.me/Gataya_Official_Youtube_Updates"),
+                    InlineKeyboardButton("𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽", url="https://t.me/Gatayaofficialnew")
                 ],
                 [
-                    InlineKeyboardButton("🧑‍💻Devloper🧑‍💻", url="https://t.me/JigarVarma2005")
+                    InlineKeyboardButton("🧑‍💻𝗗𝗲𝘃🧑‍💻", url="https://t.me/ChatSANU_bot")
                 ]
             ]
         ),
@@ -79,14 +79,14 @@ def _source_code(client, message):
 	reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Souce Code", url="https://github.com/Jigarvarma2005/ForceSub_Bot")
+                    InlineKeyboardButton("𝗦𝗼𝘂𝗿𝗰𝗲 𝗖𝗼𝗱𝗲", url="https://NoSourceCodeLimitedEdition.com")
                 ],
                 [
-                    InlineKeyboardButton("Join Updates Channel", url="https://t.me/UniversalBotsUpdate"),
-                    InlineKeyboardButton("Support Group", url="https://t.me/UniversalBotsSupport")
+                    InlineKeyboardButton("𝗝𝗼𝗶𝗻 𝗨𝗽𝗱𝗮𝘁𝗲𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹", url="https://t.me/Gataya_Official_Youtube_Updates"),
+                    InlineKeyboardButton("𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽", url="https://t.me/Gatayaofficialnew")
                 ],
                 [
-                    InlineKeyboardButton("🧑‍💻Devloper🧑‍💻", url="https://t.me/JigarVarma2005")
+                    InlineKeyboardButton("🧑‍💻𝗗𝗲𝘃🧑‍💻", url="https://t.me/ChatSANU_bot")
                 ]
             ]
         ),
@@ -103,7 +103,7 @@ def _help(client, message):
             if user.status == "kicked":
                client.send_message(
                    chat_id=message.chat.id,
-                   text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/UniversalBotsSupport).",
+                   text="𝗦𝗼𝗿𝗿𝘆 𝗦𝗶𝗿, 𝗬𝗼𝘂 𝗮𝗿𝗲 𝗕𝗮𝗻𝗻𝗲𝗱 𝘁𝗼 𝘂𝘀𝗲 𝗺𝗲. 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 𝗺𝘆 [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽](https://t.me/gatayaofficialnew).",
                    parse_mode="markdown",
                    disable_web_page_preview=True
                )
@@ -111,11 +111,11 @@ def _help(client, message):
         except UserNotParticipant:
             client.send_message(
                 chat_id=message.chat.id,
-                text="**Please Join My Updates Channel to use this Bot!**",
+                text="❗ 𝗣𝗹𝗲𝗮𝘀𝗲 𝗝𝗼𝗶𝗻 𝗠𝘆 𝗨𝗽𝗱𝗮𝘁𝗲𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗶𝘀 𝗕𝗼𝘁!**",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{update_channel}")
+                            InlineKeyboardButton("𝗝𝗼𝗶𝗻 𝗡𝗼𝘄 ✅", url=f"https://t.me/{update_channel}")
                         ]
                     ]
                 ),
@@ -125,7 +125,7 @@ def _help(client, message):
         except Exception:
             client.send_message(
                 chat_id=message.chat.id,
-                text="Hey use this command in my pm. \nFor more help ask in my [Support Group](https://t.me/UniversalBotsSupport).",
+                text="Hey use this command in my pm. \nFor more help ask in my [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽](https://t.me/gatayaofficialnew).",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
