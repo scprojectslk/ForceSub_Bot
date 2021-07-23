@@ -1,17 +1,4 @@
-import time
-import logging
-from Config import Config
-from pyrogram import Client, filters
-from sql_helpers import forceSubscribe_sql as sql
-from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
-
-logging.basicConfig(level=logging.INFO)
-
-static_data_filter = filters.create(lambda _, __, query: query.data == "onUnMuteRequest")
-@Client.on_callback_query(static_data_filter)
-def _onUnMuteRequest(client, cb):
-  user_id = cb.from_user.id
+user_id = cb.from_user.id
   chat_id = cb.message.chat.id
   chat_db = sql.fs_settings(chat_id)
   if chat_db:
@@ -25,15 +12,15 @@ def _onUnMuteRequest(client, cb):
             if cb.message.reply_to_message.from_user.id == user_id:
               cb.message.delete()
           except UserNotParticipant:
-            client.answer_callback_query(cb.id, text="❗ Join the mentioned 'channel' and press the 'UnMute Me' button again.", show_alert=True)
+            client.answer_callback_query(cb.id, text="❗ 𝗝𝗼𝗶𝗻 𝘁𝗵𝗲 𝗺𝗲𝗻𝘁𝗶𝗼𝗻𝗲𝗱 '𝗰𝗵𝗮𝗻𝗻𝗲𝗹' 𝗮𝗻𝗱 𝗽𝗿𝗲𝘀𝘀 𝘁𝗵𝗲 '𝗨𝗻𝗠𝘂𝘁𝗲 𝗠𝗲' 𝗯𝘂𝘁𝘁𝗼𝗻 𝗮𝗴𝗮𝗶𝗻. ❗ අපේ 'චැනල්' එකට Join වෙලා 'Unmute Me' Button එක Click කරන්න.", show_alert=True)
       else:
-        client.answer_callback_query(cb.id, text="❗ You are muted by admins for other reasons.", show_alert=True)
+        client.answer_callback_query(cb.id, text="❗ 𝗬𝗼𝘂 𝗮𝗿𝗲 𝗺𝘂𝘁𝗲𝗱 𝗯𝘆 𝗮𝗱𝗺𝗶𝗻𝘀 𝗳𝗼𝗿 𝗼𝘁𝗵𝗲𝗿 𝗿𝗲𝗮𝘀𝗼𝗻𝘀. ❗ වෙන හේතුවක් මත ඔබව සමූහයෙන් Mute කර ඇත.", show_alert=True)
     else:
       if not client.get_chat_member(chat_id, (client.get_me()).id).status == 'administrator':
         client.send_message(chat_id, f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__")
         client.leave_chat(chat_id)
       else:
-        client.answer_callback_query(cb.id, text="❗ Warning: Don't click the button if you can speak freely.", show_alert=True)
+        client.answer_callback_query(cb.id, text="❗ 𝗪𝗮𝗿𝗻𝗶𝗻𝗴: 𝗗𝗼𝗻'𝘁 𝗰𝗹𝗶𝗰𝗸 𝘁𝗵𝗲 𝗯𝘂𝘁𝘁𝗼𝗻 𝗶𝗳 𝘆𝗼𝘂 𝗰𝗮𝗻 𝘀𝗽𝗲𝗮𝗸 𝗳𝗿𝗲𝗲𝗹𝘆 🤔. ❗ ඔබට සමූහයේ චැට් කිරීමට හැකි නිසා මෙය Click නොකරන්න. 🤔", show_alert=True)
 
 
 
@@ -54,15 +41,15 @@ def _check_member(client, message):
       except UserNotParticipant:
         try:
           sent_message = message.reply_text(
-              " {} , you are not subscribed to my channel yet. Please join using below button and press the UnMute Me button to unmute yourself.".format(message.from_user.mention, channel, channel),
+              " {} ,❗ 𝘆𝗼𝘂 𝗮𝗿𝗲 𝗻𝗼𝘁 𝘀𝘂𝗯𝘀𝗰𝗿𝗶𝗯𝗲𝗱 𝘁𝗼 𝘁𝗵𝗲 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 𝘆𝗲𝘁. 𝗣𝗹𝗲𝗮𝘀𝗲 𝗷𝗼𝗶𝗻 𝘂𝘀𝗶𝗻𝗴 𝗯𝗲𝗹𝗼𝘄 𝗯𝘂𝘁𝘁𝗼𝗻 𝗮𝗻𝗱 𝗽𝗿𝗲𝘀𝘀 𝘁𝗵𝗲 𝗨𝗻𝗠𝘂𝘁𝗲 𝗠𝗲 𝗯𝘂𝘁𝘁𝗼𝗻 𝘁𝗼 𝘂𝗻𝗺𝘂𝘁𝗲 𝘆𝗼𝘂𝗿𝘀𝗲𝗹𝗳.❗ ඔයා අපේ චැනල් එකට Join වෙලා නෑ. චැනල් එකට පහල Button එකෙන් Join වෙලා Unmute කරන්න ".format(message.from_user.mention, channel, channel),
               disable_web_page_preview=True,
              reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Subscribe My Channel", url=channel_url)
+                    InlineKeyboardButton("𝗝𝗼𝗶𝗻 𝗡𝗼𝘄 📛", url=channel_url)
                 ],
                 [
-                    InlineKeyboardButton("UnMute Me", callback_data="onUnMuteRequest")
+                    InlineKeyboardButton("𝗨𝗻𝗠𝘂𝘁𝗲 𝗠𝗲 ✅", callback_data="onUnMuteRequest")
                 ]
             ]
         )
@@ -86,15 +73,15 @@ def config(client, message):
       input_str = input_str.replace("@", "")
       if input_str.lower() in ("off", "no", "disable"):
         sql.disapprove(chat_id)
-        message.reply_text("❌ **Force Subscribe is Disabled Successfully.**")
+        message.reply_text("❌ 𝗙𝗼𝗿𝗰𝗲 𝗦𝘂𝗯𝘀𝗰𝗿𝗶𝗯𝗲 𝗶𝘀 𝗗𝗶𝘀𝗮𝗯𝗹𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆.")
       elif input_str.lower() in ('clear'):
-        sent_message = message.reply_text('**Unmuting all members who are muted by me...**')
+        sent_message = message.reply_text('𝗨𝗻𝗺𝘂𝘁𝗶𝗻𝗴 𝗮𝗹𝗹 𝗺𝗲𝗺𝗯𝗲𝗿𝘀 𝘄𝗵𝗼 𝗮𝗿𝗲 𝗺𝘂𝘁𝗲𝗱 𝗯𝘆 𝗺𝗲... ✅')
         try:
           for chat_member in client.get_chat_members(message.chat.id, filter="restricted"):
             if chat_member.restricted_by.id == (client.get_me()).id:
                 client.unban_chat_member(chat_id, chat_member.user.id)
                 time.sleep(1)
-          sent_message.edit('✅ **UnMuted all members who are muted by me.**')
+          sent_message.edit('𝗨𝗻𝗺𝘂𝘁𝗲𝗱 𝗮𝗹𝗹 𝗺𝗲𝗺𝗯𝗲𝗿𝘀 𝘄𝗵𝗼 𝗮𝗿𝗲 𝗺𝘂𝘁𝗲𝗱 𝗯𝘆 𝗺𝗲.✅')
         except ChatAdminRequired:
           sent_message.edit('❗ **I am not an admin in this chat.**\n__I can\'t unmute members because i am not an admin in this chat make me admin with ban user permission.__')
       else:
@@ -119,8 +106,8 @@ def config(client, message):
             channel_url = client.export_chat_invite_link(int(input_str))
         else:
             channel_url = f"https://t.me/{my_channel}"
-        message.reply_text(f"✅ **Force Subscribe is enabled in this chat.**\n__For this [Channel]({channel_url})__", disable_web_page_preview=True)
+        message.reply_text(f"✅ 𝗙𝗼𝗿𝗰𝗲 𝗦𝘂𝗯𝘀𝗰𝗿𝗶𝗯𝗲 𝗶𝘀 𝗲𝗻𝗮𝗯𝗹𝗲𝗱 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗰𝗵𝗮𝘁.\n__For this [Channel]({channel_url})__", disable_web_page_preview=True)
       else:
-        message.reply_text("❌ **Force Subscribe is disabled in this chat.**")
+        message.reply_text("❌ 𝗙𝗼𝗿𝗰𝗲 𝗦𝘂𝗯𝘀𝗰𝗿𝗶𝗯𝗲 𝗶𝘀 𝗲𝗻𝗮𝗯𝗹𝗲𝗱 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗰𝗵𝗮𝘁.")
   else:
       message.reply_text("❗ **Group Creator Required**\n__You have to be the group creator to do that.__")
